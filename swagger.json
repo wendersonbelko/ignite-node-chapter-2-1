@@ -1,0 +1,203 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Api Solid",
+        "description": "Api.",
+        "termsOfService": "",
+        "contact": {
+            "name": "belko",
+            "url": "http://localhost:3333",
+            "email": "support@example.com"
+        }
+    },
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": ["Users"],
+                "summary": "Criar um novo usuário",
+                "description": "Criar um novo usuário",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "description": "string"
+                                    },
+                                    "email": {
+                                        "description": "string"
+                                    }
+                                },
+                                "exemple": {
+                                    "name": "Name",
+                                    "email": "name@email.com"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Criado"
+                    },
+                    "400": {
+                        "description": "Email já cadastrado"
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Users"],
+                "summary": "Lista todos os Usuários",
+                "description": "Lista todos os Usuários",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "description": "uuid"
+                                            },
+                                            "name": {
+                                                "description": "string"
+                                            },
+                                            "email": {
+                                                "description": "string"
+                                            },
+                                            "admin": {
+                                                "description": "boolean"
+                                            },
+                                            "created_at": {
+                                                "description": "date"
+                                            },
+
+                                            "update_at": {
+                                                "description": "date"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Category Exists"
+                    }
+                }
+            }
+        },
+        "/users/{user_id}": {
+            "get": {
+                "tags": ["Users"],
+                "summary": "Lista um usuário",
+                "description": "Lista um usuário",
+                "parameters": {
+                    "name": "user_id",
+                    "in": "path",
+                    "description": "ID do usuário",
+                    "required": true,
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "description": "uuid"
+                                            },
+                                            "name": {
+                                                "description": "string"
+                                            },
+                                            "email": {
+                                                "description": "string"
+                                            },
+                                            "admin": {
+                                                "description": "boolean"
+                                            },
+                                            "created_at": {
+                                                "description": "date"
+                                            },
+
+                                            "update_at": {
+                                                "description": "date"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Category Exists"
+                    }
+                }
+            }
+        },
+        "/users/{user_id}/admin": {
+            "get": {
+                "tags": ["Users"],
+                "summary": "Torna o usuário admin",
+                "description": "torna o usuário admin",
+                "parameters": {
+                    "name": "user_id",
+                    "in": "path",
+                    "description": "ID do usuário",
+                    "required": true,
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "description": "uuid"
+                                            },
+                                            "name": {
+                                                "description": "string"
+                                            },
+                                            "email": {
+                                                "description": "string"
+                                            },
+                                            "admin": {
+                                                "description": "boolean"
+                                            },
+                                            "created_at": {
+                                                "description": "date"
+                                            },
+
+                                            "update_at": {
+                                                "description": "date"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Category Exists"
+                    }
+                }
+            }
+        }
+    }
+}
